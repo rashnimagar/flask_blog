@@ -1,0 +1,62 @@
+/* Global font size slightly larger */
+form,
+form label,
+form input,
+form button,
+form a {
+  font-size: 1.1rem;
+}
+
+/* Material-style input */
+.md-input {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.md-input input {
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1.2rem 0.75rem 0.4rem 0.75rem; /* space for floating label */
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.md-input input:focus {
+  border-color: #3b5998;
+  box-shadow: 0 0 0 0.2rem rgba(59, 89, 152, 0.25);
+}
+
+/* Label styling */
+.md-input label {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 0.25rem;
+  color: #888;
+  font-size: 1.05rem;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Float label to top border when input focused or has value */
+.md-input input:focus + label,
+.md-input input:not(:placeholder-shown) + label {
+  top: -0.5rem;
+  left: 0.6rem;
+  font-size: 0.85rem;
+  color: #3b5998;
+}
+
+/* Divider lines */
+hr {
+  border-top: 1px solid #aaa;
+}
+
+/* Social buttons font size */
+.btn-lg {
+  font-size: 1.05rem;
+}

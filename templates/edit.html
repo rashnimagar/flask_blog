@@ -1,0 +1,127 @@
+{% extends "layout.html" %} {% block content %}
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('{{ url_for('static', filename='assets/img/edit-bg.jpg') }}')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>{{ params['blog_name'] }}</h1>
+          <span class="subheading">Add | Edit your post</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <!-- Add | Edit Post From -->
+      <div class="my-5">
+        <form
+          action="/edit/{{ pid }}"
+          method="post"
+          id="postForm"
+          name="postForm"
+          enctype="multipart/form-data"
+        >
+          <div class="form-floating">
+            <input
+              class="form-control"
+              id="slug"
+              name="slug"
+              type="text"
+              placeholder="Slug"
+              value=" {{ post.slug if post else '' }}"
+              data-sb-validations="required"
+            />
+            <label for="slug">Slug</label>
+            <div class="invalid-feedback" data-sb-feedback="slug:required">
+              A slug is required.
+            </div>
+          </div>
+          <div class="form-floating">
+            <input
+              class="form-control"
+              id="title"
+              name="title"
+              type="text"
+              placeholder="Title"
+              value=" {{ post.title if post else '' }}"
+              data-sb-validations="required"
+            />
+            <label for="title">Title</label>
+            <div class="invalid-feedback" data-sb-feedback="title:required">
+              A title is required.
+            </div>
+          </div>
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              id="content"
+              name="content"
+              type="text"
+              placeholder="Content"
+              style="height: 12rem"
+              data-sb-validations="required"
+            >
+{{ post.content if post else '' }}</textarea
+            >
+            <label for="content">Content</label>
+            <div class="invalid-feedback" data-sb-feedback="content:required">
+              A content is required.
+            </div>
+          </div>
+          <div class="form-floating">
+            <input
+              class="form-control"
+              id="posted_by"
+              name="posted_by"
+              type="text"
+              placeholder="Posted BY"
+              value=" {{ post.posted_by if post else'' }}"
+              data-sb-validations="required"
+            />
+            <label for="posted_by">Posted By</label>
+            <div class="invalid-feedback" data-sb-feedback="posted_by:required">
+              A posted_by is required.
+            </div>
+          </div>
+          <!-- File upload -->
+          <div class="form-floating">
+            <input
+              class="form-control"
+              type="file"
+              id="file_upload"
+              name="file_upload"
+              placeholder="File Upload"
+              value=" {{ post.file_upload if post else'' }}"
+              data-sb-validations="required"
+            />
+            <label for="file_upload">File Upload</label>
+            <div
+              class="invalid-feedback"
+              data-sb-feedback="file_upload:required"
+            >
+              A file upload is required.
+            </div>
+          </div>
+          <br />
+          <!-- Submit Button-->
+          <button
+            class="btn btn-primary text-uppercase"
+            id="submitButton"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "layout.html" %} {% block content %}
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('{{ url_for('static', filename='assets/img/dashboard-bg.jpg') }}')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>{{ params['blog_name'] }}</h1>
+          <span class="subheading">Manage your blog posts here</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <!-- Action Buttons -->
+    <div class="mb-4 d-flex gap-2 flex-wrap">
+      <a class="btn btn-success text-uppercase" href="/edit/0">Add New Post</a>
+      <a class="btn btn-secondary text-uppercase" href="/logout">Logout</a>
+    </div>
+
+    <!-- Table for posts -->
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle">
+        <caption class="text-muted">
+          List of posts
+        </caption>
+
+        <!-- Table Head -->
+        <thead class="table-dark text-center">
+          <tr>
+            <th scope="col">PID</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Posted By</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <!-- Table Body -->
+        <tbody class="small text-dark">
+          {% for post in posts %}
+          <tr>
+            <td class="text-center">{{ post.pid }}</td>
+            <td>{{ post.slug }}</td>
+            <td
+              style="
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
+              {{ post.title }}
+            </td>
+            <td
+              style="
+                max-width: 300px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
+              {{ post.content[:50] ~ ('...' if post.content|length > 50 else '')
+              }}
+            </td>
+            <td>{{ post.posted_by }}</td>
+            <td>{{ post.date }}</td>
+            <td class="d-flex justify-content-center gap-2 flex-wrap">
+              <a
+                class="btn btn-outline-primary btn-sm"
+                href="/edit/{{ post.pid }}"
+                >Edit</a
+              >
+              <a
+                class="btn btn-outline-danger btn-sm"
+                href="/delete/{{ post.pid }}"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="7" class="text-center text-muted">No posts found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

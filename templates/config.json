@@ -1,0 +1,20 @@
+{
+  "params": {
+    "admin_user": "rashni",
+    "admin_password": "Rashni@2406",
+    "secret_key": "rashni-blog-key",
+    "file_upload_path": "C:\\Users\\user\\OneDrive\\Desktop\\flask_blog\\static\\assets\\img",
+    "no_of_posts": 2,
+    "local_server": true,
+    "local_uri": "mysql+pymysql://root:2406rAshniMagar@localhost/rashniblog",
+    "prod_uri": "mysql+pymysql://root:2406rAshniMagar@localhost/rashniblog",
+    "gmail_user": "RashniThapaMagar2@gmail.com",
+    "gmail_password": "qcqm cjhh steb layr",
+    "blog_name": "Rashni's Blog",
+    "blog_title": "Welcome to Rashni's Blog",
+    "about_text": "Hi, I am Rashni Thapa Magar. I am a budding software developer and a tech enthusiast. I love to write about technology, programming, and web development. Through this blog, I aim to share my knowledge and experiences with like-minded individuals. Join me on this exciting journey of learning and growth!",
+    "fb_url": "https://www.facebook.com/share/15U3vDnpgqw/",
+    "ig_url": "https://www.instagram.com/rashnimagar/",
+    "gh_url": "https://github.com/rashnimagar"
+  }
+}
