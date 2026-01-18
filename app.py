@@ -38,7 +38,7 @@ mail = Mail(app)
 #else:
  #   app.config['SQLALCHEMY_DATABASE_URI'] = params['pro_uri']
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('MYSQL_DATABASE_URL', params.get('local_uri'))
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', params.get('local_uri'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
