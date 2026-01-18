@@ -26,18 +26,19 @@ app.config.update(
     MAIL_PORT = 587,
     MAIL_USE_TLS = True,
     MAIL_USE_SSL = False,
-    MAIL_USERNAME = params['gmail_user'],
-    MAIL_PASSWORD = params['gmail_password'],
-    MAIL_DEFAULT_SENDER = params['gmail_user']
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', params['gmail_user']),
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', params['gmail_password']),
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', params['gmail_user'])   
 )
 mail = Mail(app)
 
 #connecting to the database
-if params['local_server']:
-    app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = params['pro_uri']
+#if params['local_server']:
+ #   app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
+#else:
+ #   app.config['SQLALCHEMY_DATABASE_URI'] = params['pro_uri']
 
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('MYSQL_DATABASE_URL', params.get('local_uri'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
